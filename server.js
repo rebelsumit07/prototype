@@ -4,9 +4,10 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/admin");     // ✅ THIS LINE
+const adminRoutes = require("./routes/admin");
 const foodRoutes = require("./routes/foodRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const reservationRoutes = require("./routes/reservationRoutes"); // ✅ ADDED
 
 dotenv.config();
 const app = express();
@@ -16,11 +17,11 @@ app.use(express.json());
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/admin", adminRoutes);   // ✅ ADMIN LOGIN
+app.use("/admin", adminRoutes);
 app.use("/food", foodRoutes);
 app.use("/orders", orderRoutes);
+app.use("/reservations", reservationRoutes); // ✅ ADDED
 
-// MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
