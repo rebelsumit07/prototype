@@ -27,3 +27,16 @@ exports.getAllReservations = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// DELETE a reservation by ID (for admin panel)
+exports.deleteReservation = async (req, res) => {
+  try {
+    const reservation = await Reservation.findByIdAndDelete(req.params.id);
+    if (!reservation) {
+      return res.status(404).json({ success: false, message: "Reservation not found" });
+    }
+    res.status(200).json({ success: true, message: "Reservation deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
