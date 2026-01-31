@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {
   createReservation,
-  getAllReservations
+  getAllReservations,
+  deleteReservation  // ✅ import this
 } = require("../controllers/reservationController");
 
 router.post("/", createReservation);
