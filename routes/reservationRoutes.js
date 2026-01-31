@@ -7,5 +7,6 @@ const {
 
 router.post("/", createReservation);
 router.get("/", getAllReservations);
+router.delete("/:id", deleteReservation);
 
 module.exports = router;
