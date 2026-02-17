@@ -17,10 +17,11 @@ const OrderSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ["Order Received", "Processing", "Out for Delivery", "Delivered", "Canceled"],
-    default: "Received"
+    default: "Order Received"
   },
   remarks: { type: String, default: "" }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Order", OrderSchema);
+
 
